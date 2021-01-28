@@ -33,6 +33,7 @@ public class profileActivity extends AppCompatActivity {
                     editor.putString(getString(R.string.key), userInput);
                     editor.apply();
                     Toast.makeText(profileActivity.this, "saved", Toast.LENGTH_SHORT).show();
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
             }
         });
