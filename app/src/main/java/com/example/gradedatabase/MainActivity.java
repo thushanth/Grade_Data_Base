@@ -28,10 +28,21 @@ public class MainActivity extends AppCompatActivity {
                 goToProfileActivity();
             }
         });
+        gradeNavBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToGradeActivity();
+            }
+        });
     }
 
     private void goToProfileActivity() {
         Intent intent = new Intent(this, profileActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToGradeActivity(){
+        Intent intent = new Intent(this, gradeActivity.class);
         startActivity(intent);
     }
 

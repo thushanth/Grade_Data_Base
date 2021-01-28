@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GradeDataBase">
         <activity
-            android:name=".profileActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".gradeActivity"
+            android:parentActivityName=".MainActivity">
             >
+        </activity>
+        <activity
+            android:name=".profileActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
