@@ -1,9 +1,13 @@
 package com.example.gradedatabase;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,6 +41,24 @@ public class profileActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+       switch(item.getItemId()){
+           case R.id.action_show:
+               Toast.makeText(this,"Item 1", Toast.LENGTH_SHORT).show();
+               return true;
+           default:
+               return super.onOptionsItemSelected(item);
+       }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.nav_profile, menu);
+        return true;
     }
 
     private void setupUI(){

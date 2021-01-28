@@ -7,6 +7,8 @@
     <string name="nameText">Name:</string>
     <string name="hintNameText">Enter Name: A-Z</string>
     <string name="hintSaveBtn">Save</string>
+    <string name="editBtn">edit</string>
+    <string name="convertBtn">convert grades</string>
     <!-- Shared Preferences -->
     <string name="key">SharedKey</string>
     <string name="SharedID">FilenameA</string>
