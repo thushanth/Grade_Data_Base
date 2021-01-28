@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Grade Data Base</string>
     <!--Main Activity-->
-    <string name="profileBtn"></string>
+    <string name="profileBtn">Empty</string>
     <string name="gradeBtn">SHOW MY GRADES</string>
     <!--Profile Activity-->
     <string name="nameText">Name:</string>
