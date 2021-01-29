@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 public class gradeActivity extends AppCompatActivity {
 
-    String[] mobileArray={"pizza","pepper","onions"};
+    //String[] mobileArray={"pizza","pepper","onions"};
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,13 @@ public class gradeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grade);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        generateContent();
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,mobileArray);
 
-        ListView listView = (ListView) findViewById(R.id.listGrade);
-        listView.setAdapter(adapter);
+        //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,mobileArray);
+
+        //listView = (ListView) findViewById(R.id.listGrade);
+        generateContent();
+
+       // listView.setAdapter(adapter);
     }
 
     @Override
@@ -50,16 +53,28 @@ public class gradeActivity extends AppCompatActivity {
 
     private void generateContent()
     {
+        float grade = 0;
+        listView = (ListView)findViewById(R.id.listGrade);
+        ArrayList<String> arrayList=new ArrayList<>();
+
         for(int j = 0; j<5; j++)
         {
             Course course = Course.generateRandomCourse();
             ArrayList<Assignment> assignments = course.getAssignments();
-            System.out.println(course.getCourseTitle());
-            for(int i=0; i < assignments.size(); i++)
+            arrayList.add(course.getCourseTitle());
+            float arrayDim = assignments.size();
+            if(assignments.size() > 0)
             {
-                 //assignments.get(i).getAssignmentTitle() + " " + assignments.get(i).getAssignmentGrade();
+                arrayList.add(String.valueOf(grade/arrayDim));
             }
+            else
+            {
+                arrayList.add("0");
+            }
+            grade = 0;
         }
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+        listView.setAdapter(arrayAdapter);
     }
 
 }
