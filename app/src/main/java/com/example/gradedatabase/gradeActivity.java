@@ -15,22 +15,16 @@ import java.util.ArrayList;
 
 public class gradeActivity extends AppCompatActivity {
 
-    //String[] mobileArray={"pizza","pepper","onions"};
     ListView listView;
+    private String[] courseProfile = {"ENGR390","ENCS282","ELEC311"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grade);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        isItEmpty();
 
-
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_listview,mobileArray);
-
-        //listView = (ListView) findViewById(R.id.listGrade);
-        generateContent();
-
-       // listView.setAdapter(adapter);
     }
 
     @Override
@@ -51,30 +45,24 @@ public class gradeActivity extends AppCompatActivity {
         return true;
     }
 
-    private void generateContent()
+    private void isItEmpty()
     {
-        float grade = 0;
+        // I don't know how to work with array List or objects of array.
         listView = (ListView)findViewById(R.id.listGrade);
-        ArrayList<String> arrayList=new ArrayList<>();
+        ArrayList<String> name = new ArrayList<String>();
 
-        for(int j = 0; j<5; j++)
+        for(int j = 0; j < 5; j++)
         {
             Course course = Course.generateRandomCourse();
             ArrayList<Assignment> assignments = course.getAssignments();
-            arrayList.add(course.getCourseTitle());
-            float arrayDim = assignments.size();
-            if(assignments.size() > 0)
+            name.add(course.getCourseTitle());
+            for(int i = 0; i < assignments.size(); i++)
             {
-                arrayList.add(String.valueOf(grade/arrayDim));
+                name.add(assignments.get(i).getAssignmentTitle() + " " + assignments.get(i).getAssignmentGrade());
             }
-            else
-            {
-                arrayList.add("0");
-            }
-            grade = 0;
+            ArrayAdapter<String> arrayAdapter2 = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.labelTitle,name);
+            listView.setAdapter(arrayAdapter2);
         }
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
-        listView.setAdapter(arrayAdapter);
     }
 
 }
